@@ -19,7 +19,15 @@ namespace SharpDXLab.Tests
                 foreach (var item in factory.Adapters)
                 {
                     var description = item.Description;
-                    Console.WriteLine(description.Description);
+
+                    var sb = new StringBuilder();
+                    sb.AppendLine("\tVendorId: 0x" + description.VendorId.ToString("X"));
+                    sb.AppendLine("\tDeviceId: 0x" + description.DeviceId.ToString("X"));
+                    sb.AppendLine(description.Description);
+                    sb.AppendLine("\tDedicatedVideoMemory: " + description.DedicatedVideoMemory);
+                    sb.AppendLine("\tDedicatedSystemMemory: " + description.DedicatedSystemMemory);
+                    sb.AppendLine("\tSharedSystemMemory: " + description.SharedSystemMemory);
+                    Console.Write(sb);
                 }
             }
         }
