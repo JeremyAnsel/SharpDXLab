@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SharpDX.Direct3D;
 using SharpDX.DXGI;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,22 @@ namespace SharpDXLab.Tests
                     sb.AppendLine("\tFeatureLevel: " + level);
                     Console.Write(sb);
                 }
+            }
+        }
+
+        [Test]
+        public void CreateDeviceTest()
+        {
+            Adapter adapter;
+            using (var factory = new Factory1())
+            {
+                adapter = factory.GetAdapter(0);
+            }
+
+            using (var device = new SharpDX.Direct3D11.Device(adapter, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport, FeatureLevel.Level_10_0))
+            {
+                Console.WriteLine(adapter.Description.Description);
+                Console.WriteLine(device.FeatureLevel);
             }
         }
     }
