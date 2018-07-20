@@ -14,3 +14,6 @@ before_build:
 build:
   project: SharpDXLab\SharpDXLab.sln
   verbosity: minimal
+
+after_build:
+  - echo %APPVEYOR_REPO_NAME%
