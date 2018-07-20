@@ -16,4 +16,4 @@ build:
   verbosity: minimal
 
 after_build:
-  - echo %APPVEYOR_REPO_NAME%
+  - if %APPVEYOR_REPO_NAME%=="JeremyAnsel/SharpDXLab" echo %APPVEYOR_REPO_NAME%
