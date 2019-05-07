@@ -59,6 +59,25 @@ namespace SharpDXLab.Tests
         }
 
         [Test]
+        public void CreateHardwareDevice()
+        {
+            using (var d3dDevice = new SharpDX.Direct3D11.Device(DriverType.Hardware, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport))
+            {
+                using (var device = d3dDevice.QueryInterface<Device>())
+                using (var adapter = device.Adapter)
+                {
+                    Console.WriteLine(adapter.Description.Description);
+
+                    Console.WriteLine("\tOutputs:");
+                    foreach (var output in adapter.Outputs)
+                    {
+                        Console.WriteLine("\t\t" + output.Description.DeviceName);
+                    }
+                }
+            }
+        }
+
+        [Test]
         public void CreateWarpDevice()
         {
             using (var d3dDevice = new SharpDX.Direct3D11.Device(DriverType.Warp, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport))
