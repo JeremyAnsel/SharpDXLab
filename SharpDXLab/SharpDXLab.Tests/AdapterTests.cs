@@ -32,7 +32,7 @@ namespace SharpDXLab.Tests
                     sb.AppendLine("\tFeatureLevel: " + level);
 
                     sb.AppendLine("\tOutputs:");
-                    foreach(var output in item.Outputs)
+                    foreach (var output in item.Outputs)
                     {
                         sb.AppendLine("\t\t" + output.Description.DeviceName);
                     }
@@ -55,6 +55,25 @@ namespace SharpDXLab.Tests
             {
                 Console.WriteLine(adapter.Description.Description);
                 Console.WriteLine(device.FeatureLevel);
+            }
+        }
+
+        [Test]
+        public void CreateWarpDevice()
+        {
+            using (var d3dDevice = new SharpDX.Direct3D11.Device(DriverType.Warp, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport))
+            {
+                using (var device = d3dDevice.QueryInterface<Device>())
+                using (var adapter = device.Adapter)
+                {
+                    Console.WriteLine(adapter.Description.Description);
+
+                    Console.WriteLine("\tOutputs:");
+                    foreach (var output in adapter.Outputs)
+                    {
+                        Console.WriteLine("\t\t" + output.Description.DeviceName);
+                    }
+                }
             }
         }
     }
