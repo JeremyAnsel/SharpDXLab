@@ -30,6 +30,13 @@ namespace SharpDXLab.Tests
                     sb.AppendLine("\tDedicatedSystemMemory: " + description.DedicatedSystemMemory);
                     sb.AppendLine("\tSharedSystemMemory: " + description.SharedSystemMemory);
                     sb.AppendLine("\tFeatureLevel: " + level);
+
+                    sb.AppendLine("\tOutputs:");
+                    foreach(var output in item.Outputs)
+                    {
+                        sb.AppendLine("\t\t" + output.Description.DeviceName);
+                    }
+
                     Console.Write(sb);
                 }
             }
