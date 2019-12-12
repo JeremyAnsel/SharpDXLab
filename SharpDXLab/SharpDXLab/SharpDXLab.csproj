@@ -43,11 +43,19 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>echo "Directories:"
+    <PostBuildEvent>echo "--- Directories ---"
+echo "Current directory:"
 cd
+echo "ProjectDir:"
 echo "$(ProjectDir)"
+echo "SolutionDir:"
 echo "$(SolutionDir)"
 </PostBuildEvent>
   </PropertyGroup>
