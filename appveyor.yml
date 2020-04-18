@@ -17,7 +17,7 @@ build:
   verbosity: minimal
 
 after_build:
-  - if "%APPVEYOR_REPO_NAME%" == "JeremyAnsel/SharpDXLab" echo %APPVEYOR_REPO_NAME%
+- if "%APPVEYOR_REPO_NAME%" == "JeremyAnsel/SharpDXLab" echo %APPVEYOR_REPO_NAME%
 - git config core.safecrlf false
 - git config push.default simple
 - git config user.name \"Jérémy Ansel\""
